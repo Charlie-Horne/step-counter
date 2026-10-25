@@ -1,0 +1,76 @@
+// Dependency Graph
+digraph {
+	ratio=auto size="20,25!"
+	subgraph cluster_provided {
+		color=lightgrey label="Provided Modules" style=filled
+	}
+	adc_driver
+	pwm_driver
+	kernel
+	display_steps
+	imu_driver
+	display
+	calc
+	pot_driver
+	app [color=red style=filled]
+	display_goal
+	ssd1306
+	task_serial
+	buttons
+	state
+	task_blinky
+	display_testmode
+	pwm
+	led
+	joystick_driver
+	peak_detection
+	display_setgoal
+	imu_lsm6ds
+	rgb
+	button_driver
+	main
+	display_distance
+	pwm_driver -> pwm
+	pwm_driver -> calc
+	imu_driver -> imu_lsm6ds
+	display -> ssd1306
+	display -> button_driver
+	display -> joystick_driver
+	display -> display_steps
+	display -> display_distance
+	display -> display_goal
+	display -> display_setgoal
+	display -> display_testmode
+	display -> state
+	calc -> joystick_driver
+	calc -> pot_driver
+	calc -> peak_detection
+	calc -> state
+	pot_driver -> adc_driver
+	app -> led
+	app -> pwm_driver
+	app -> kernel
+	app -> task_blinky
+	app -> task_serial
+	app -> peak_detection
+	app -> button_driver
+	app -> display
+	app -> adc_driver
+	app -> joystick_driver
+	app -> imu_driver
+	app -> calc
+	app -> state
+	task_serial -> buttons
+	task_serial -> joystick_driver
+	task_serial -> imu_driver
+	task_serial -> peak_detection
+	state -> joystick_driver
+	state -> button_driver
+	led -> rgb
+	led -> button_driver
+	led -> calc
+	joystick_driver -> adc_driver
+	peak_detection -> imu_driver
+	rgb -> main
+	main -> app
+}
